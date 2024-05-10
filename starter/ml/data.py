@@ -68,3 +68,31 @@ def process_data(
 
     X = np.concatenate([X_continuous, X_categorical], axis=1)
     return X, y, encoder, lb
+
+def data_slice(data, slice_feature):
+    """ Slice the data based on categorical features.
+
+    Slice the data using the categorical features. This is useful during 
+    inference/validation to illustrate the difference between subgroups.
+
+    Inputs
+    ------
+    data : pd.DataFrame
+        Dataframe containing the features, at least columns in `categorical_features`.
+    slice_feature: str
+        The categorical feature used to slice the data.
+
+    Returns
+    -------
+    sliced_data : dict
+        Dictionary of sliced data. The keys are the categories of the slice_feature.
+    """
+
+    sliced_data = {}
+    
+    for category in data[slice_feature].unique():
+        slice_idx = data.loc[data[slice_feature] == category].index
+        slice = data.loc[slice_idx]
+        sliced_data[category] = slice
+
+    return sliced_data
