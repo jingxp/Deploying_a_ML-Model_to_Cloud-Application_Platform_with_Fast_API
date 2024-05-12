@@ -44,6 +44,13 @@ with open('../model/onehotencoder.pkl', 'wb') as f:
 
 with open('../model/labelbinarizer.pkl', 'wb') as f:
     pickle.dump(lb, f)
+############################################
+# Test the trained model on the test set
+test_pred = inference(model, X_test)
+test_precision, test_recall, test_fbeta = compute_model_metrics(test_pred, y_test)
+print("Perisoin on the test set: {}".format(test_precision))
+print("Recall rate on the test set: {}".format(test_recall))
+print("F1 score on the test set: {}".format(test_fbeta))
 
 ############################################
 def slice_pred(model, data, slice_feature):
