@@ -8,6 +8,8 @@ from ml.model import train_model, compute_model_metrics, inference
 import pandas as pd
 import pickle
 
+from contextlib import redirect_stdout
+
 # Add code to load in the data.
 data = pd.read_csv("../data/census_clean.csv")
 
@@ -86,10 +88,12 @@ def slice_pred(model, data, slice_feature):
 #############################################
 
 # Try sliced prediction for each category features
-for feature in cat_features:
-    print("*"*20)
-    print(feature)
-    sliced_results = slice_pred(model, data = test, slice_feature = feature)
-    for key, results in sliced_results.items():
-        print(key)
-        print(results)
+with open('slice_output.txt', 'w') as f:
+    with redirect_stdout(f):
+        for feature in cat_features:
+            print("*"*20)
+            print(feature)
+            sliced_results = slice_pred(model, data = test, slice_feature = feature)
+            for key, results in sliced_results.items():
+                print(key)
+                print(results)
