@@ -21,7 +21,7 @@ def cat_features():
 @pytest.fixture
 def test_df():
     """Using the original data set for testing"""
-    sample_df = pd.read_csv('../data/census_clean.csv')
+    sample_df = pd.read_csv('data/census_clean.csv')
     return sample_df
 
 def test_process_data(test_df, cat_features):
