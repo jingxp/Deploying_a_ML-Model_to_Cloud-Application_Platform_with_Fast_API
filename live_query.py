@@ -1,6 +1,7 @@
 import requests
 
-endpoint = "https://mlops-final-project-3609b5418d04.herokuapp.com/predict"
+#endpoint = "https://mlops-final-project-3609b5418d04.herokuapp.com/predict"
+
 #endpoint = 'https://mlops-final-project-3609b5418d04.herokuapp.com'
 
 test_case = {"age": 52,
