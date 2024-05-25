@@ -39,7 +39,7 @@ class InputData(BaseModel):
     hours_per_week: int = Field(alias = "hours-per-week")
     native_country: str = Field(alias = "native-country")
     class Config:
-        schema_extra = {
+        jason_schema_extra = {
             "example": {
                 "age": 59,
                 "workclass": "Private",
