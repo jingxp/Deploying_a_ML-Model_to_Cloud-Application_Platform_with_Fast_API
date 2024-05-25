@@ -8,9 +8,9 @@ from starter.ml.data import process_data
 from starter.ml.model import inference
 
 
-model = pickle.load(open("./model/model.pkl", "rb"))
-encoder = pickle.load(open("./model/onehotencoder.pkl", "rb"))
-lb = pickle.load(open("./model/labelbinarizer.pkl", "rb"))
+model = pickle.load(open("model/model.pkl", "rb"))
+encoder = pickle.load(open("model/onehotencoder.pkl", "rb"))
+lb = pickle.load(open("model/labelbinarizer.pkl", "rb"))
 
 cat_features = [
     "workclass",
